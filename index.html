@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>教师节祝福</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #f9f0e6 0%, #f5e6d3 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            max-width: 420px;
+            width: 100%;
+            background: rgba(255, 248, 240, 0.75);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 56px 56px 48px 48px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(0, 0, 0, 0.04);
+            padding: 28px 24px 36px;
+            border: 1px solid rgba(255, 235, 215, 0.5);
+        }
+
+        .carousel-wrapper {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            border-radius: 40px;
+            overflow: hidden;
+            background: #e8d9cc;
+            box-shadow: inset 0 2px 8px rgba(100, 70, 40, 0.08);
+            position: relative;
+        }
+
+        .carousel-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 20px;
+            display: block;
+            transition: opacity 0.5s ease;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 248, 240, 0.7);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: #4d3221;
+            transition: 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255, 248, 240, 0.95);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .carousel-btn:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .carousel-btn-left {
+            left: 12px;
+        }
+
+        .carousel-btn-right {
+            right: 12px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: -10px 0 16px;
+        }
+
+        .carousel-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #dcc2ad;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .carousel-dots span.active {
+            background: #7a5a3e;
+            width: 24px;
+            border-radius: 5px;
+        }
+
+        .input-section {
+            margin: 8px 0 18px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .input-row label {
+            font-weight: 500;
+            color: #4d3221;
+            font-size: 1rem;
+            background: #f0e2d4;
+            padding: 4px 14px;
+            border-radius: 40px;
+        }
+
+        .input-row input {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px 16px;
+            border: 2px solid #dcc2ad;
+            border-radius: 40px;
+            background: rgba(255, 248, 240, 0.7);
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+            color: #2d241c;
+            font-weight: 500;
+        }
+
+        .input-row input:focus {
+            border-color: #b3927a;
+            background: #fffaf5;
+            box-shadow: 0 0 0 3px rgba(180, 140, 110, 0.15);
+        }
+
+        .input-row input::placeholder {
+            color: #b3927a;
+            font-weight: 400;
+        }
+
+        .input-row button {
+            background: #7a5a3e;
+            border: none;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px 8px rgba(90, 60, 40, 0.1);
+            white-space: nowrap;
+        }
+
+        .input-row button:hover {
+            background: #5d4037;
+            transform: scale(0.97);
+        }
+
+        .input-row button:active {
+            transform: scale(0.95);
+        }
+
+        .greeting-title {
+            font-size: 2.0rem;
+            font-weight: 700;
+            color: #3e2c1d;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px 8px;
+        }
+
+        .teacher-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #7a5a3e;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px dotted #dcc2ad;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            min-height: 2.6rem;
+        }
+
+        .teacher-name .label {
+            background: #f0e2d4;
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #5d4037;
+        }
+
+        #teacherDisplay {
+            font-weight: 600;
+            color: #4d3221;
+            background: #f7e3d2;
+            padding: 0 14px;
+            border-radius: 40px;
+            min-height: 1.8rem;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .message-body {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #2d241c;
+            background: rgba(255, 242, 232, 0.5);
+            padding: 18px 20px;
+            border-radius: 32px;
+            margin: 12px 0 18px;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(210, 180, 160, 0.25);
+            min-height: 120px;
+            transition: 0.2s;
+        }
+
+        #blessingContent {
+            transition: 0.2s;
+        }
+
+        .signature {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #4d3a2b;
+            margin-top: 4px;
+            flex-wrap: wrap;
+        }
+
+        .signature .editable-highlight {
+            background: #f7e3d2;
+            padding: 2px 16px;
+            border-radius: 40px;
+            border: 1px dashed #b3927a;
+            font-weight: 500;
+        }
+
+        .footer-note {
+            margin-top: 28px;
+            font-size: 0.75rem;
+            text-align: center;
+            color: #a5836a;
+            letter-spacing: 0.8px;
+            border-top: 1px solid rgba(180, 150, 130, 0.2);
+            padding-top: 18px;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 20px 16px 28px;
+                border-radius: 40px;
+            }
+            .greeting-title {
+                font-size: 1.8rem;
+            }
+            .message-body {
+                font-size: 0.98rem;
+                padding: 16px 16px;
+            }
+            .input-row input {
+                min-width: 100px;
+                padding: 10px 14px;
+            }
+            .input-row button {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+            .carousel-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+            .carousel-btn-left {
+                left: 8px;
+            }
+            .carousel-btn-right {
+                right: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+
+        <!-- ===== 轮播图片区域 ===== -->
+        <div class="carousel-wrapper" id="carouselWrapper">
+            <img id="carouselImage" src="" alt="教师节祝福配图">
+            <button class="carousel-btn carousel-btn-left" id="prevBtn">‹</button>
+            <button class="carousel-btn carousel-btn-right" id="nextBtn">›</button>
+        </div>
+
+        <!-- ===== 底部小圆点 ===== -->
+        <div class="carousel-dots" id="carouselDots"></div>
+
+        <!-- ===== 输入姓名 ===== -->
+        <div class="input-section">
+            <div class="input-row">
+                <label for="nameInput">老师姓名</label>
+                <input type="text" id="nameInput" placeholder="输入姓名" autocomplete="off">
+                <button id="searchBtn">查看祝福</button>
+            </div>
+        </div>
+
+        <div class="greeting-title">
+            <span>教师节</span>
+            <span style="color:#b45f3a;">快乐</span>
+        </div>
+
+        <div class="teacher-name">
+            <span class="label">致</span>
+            <span id="teacherDisplay">——</span>
+            <span style="font-weight:300; color:#8b6b54;"> </span>
+        </div>
+
+        <div class="message-body" id="blessingContainer">
+            <div id="blessingContent">
+                输入姓名，点击查看祝福
+            </div>
+        </div>
+
+        <div class="signature">
+            <span>——</span>
+            <span class="editable-highlight">庞懿峰</span>
+            <span style="font-weight:300; font-size:0.9rem; color:#7a5a3e;">您的学生</span>
+        </div>
+
+        <div class="footer-note">
+            教师节快乐
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ============================================================
+            // ★★★ 在这里填写你的图片链接 ★★★
+            // 格式： "图片地址1", "图片地址2", "图片地址3"
+            // 图片上传到 GitHub 仓库后，链接格式为：
+            // https://raw.githubusercontent.com/你的用户名/仓库名/main/图片文件名
+            // ============================================================
+            const images = [
+                "https://raw.githubusercontent.com/pyfgit/teacher-s-day/main/微信图片_20260906205017_1_4.jpg",
+                "https://raw.githubusercontent.com/pyfgit/teacher-s-day/main/微信图片_20260907203530_5_4.jpg",
+                "https://raw.githubusercontent.com/pyfgit/teacher-s-day/main/微信图片_20260906205428_4_4.jpg",
+		"https://raw.githubusercontent.com/pyfgit/teacher-s-day/main/微信图片_20260906205110_3_4.jpg"
+            ];
+
+            // ============================================================
+            // ★★★ 在这里修改姓名和祝福语 ★★★
+            // 格式： "老师姓名" : "专属祝福语"
+            // ============================================================
+            const teacherBlessings = {
+                "马老师": "感谢您用粉笔书写春秋，带我们领略文字与远方的诗意。您的每一句鼓励，都成了我们成长路上的光。愿您日日从容，桃李芬芳。",
+                "董老师": "您总说数学是严谨的学科，是您让我们发现数字背后的浪漫。那些耐心的讲解，早已在我们心中种下了理性的种子。",
+                "徐老师": "从一个字母到一段文字，您带我们打开了一扇看世界的窗。您的课堂总有笑声，那些英文句子，我会一直记得。",
+            };
+
+            // ============================================================
+            // 轮播逻辑
+            // ============================================================
+            let currentIndex = 0;
+            const imgElement = document.getElementById('carouselImage');
+            const dotsContainer = document.getElementById('carouselDots');
+
+            function renderDots() {
+                dotsContainer.innerHTML = '';
+                images.forEach((_, index) => {
+                    const dot = document.createElement('span');
+                    if (index === currentIndex) dot.classList.add('active');
+                    dot.addEventListener('click', () => goTo(index));
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            function goTo(index) {
+                if (index < 0) index = images.length - 1;
+                if (index >= images.length) index = 0;
+                currentIndex = index;
+                imgElement.src = images[currentIndex];
+                renderDots();
+            }
+
+            function next() { goTo(currentIndex + 1); }
+
+            function prev() { goTo(currentIndex - 1); }
+
+            document.getElementById('nextBtn').addEventListener('click', next);
+            document.getElementById('prevBtn').addEventListener('click', prev);
+
+            // ============================================================
+            // 自动播放（每 4 秒切换一张）
+            // ============================================================
+            let autoPlayTimer = null;
+
+            function startAutoPlay() {
+                if (autoPlayTimer) clearInterval(autoPlayTimer);
+                autoPlayTimer = setInterval(() => {
+                    next();
+                }, 4000);
+            }
+
+            function stopAutoPlay() {
+                if (autoPlayTimer) {
+                    clearInterval(autoPlayTimer);
+                    autoPlayTimer = null;
+                }
+            }
+
+            const wrapper = document.getElementById('carouselWrapper');
+            wrapper.addEventListener('mouseenter', stopAutoPlay);
+            wrapper.addEventListener('mouseleave', startAutoPlay);
+
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                stopAutoPlay();
+                startAutoPlay();
+            });
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                stopAutoPlay();
+                startAutoPlay();
+            });
+
+            // ============================================================
+            // 初始化
+            // ============================================================
+            if (images.length > 0) {
+                imgElement.src = images[0];
+                renderDots();
+                startAutoPlay();
+            }
+
+            // ============================================================
+            // 姓名匹配逻辑
+            // ============================================================
+            const nameInput = document.getElementById('nameInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const teacherDisplay = document.getElementById('teacherDisplay');
+            const blessingContent = document.getElementById('blessingContent');
+
+            function findBlessing(inputName) {
+                const trimmed = inputName.trim();
+                if (!trimmed) {
+                    return { matched: false, message: '请输入老师姓名' };
+                }
+
+                if (teacherBlessings[trimmed]) {
+                    return { matched: true, name: trimmed, blessing: teacherBlessings[trimmed] };
+                }
+
+                const lowerInput = trimmed.toLowerCase();
+                for (const [key, value] of Object.entries(teacherBlessings)) {
+                    const lowerKey = key.toLowerCase();
+                    if (lowerKey.includes(lowerInput) || lowerInput.includes(lowerKey)) {
+                        return { matched: true, name: key, blessing: value };
+                    }
+                }
+
+                return { matched: false, message: `未找到 “${trimmed}” 的祝福语，请在代码中添加` };
+            }
+
+            function renderBlessing(inputName) {
+                const result = findBlessing(inputName);
+
+                if (result.matched) {
+                    teacherDisplay.textContent = result.name;
+                    blessingContent.innerHTML = result.blessing.replace(/\n/g, '<br>');
+                } else {
+                    teacherDisplay.textContent = inputName.trim() || '——';
+                    blessingContent.innerHTML = result.message;
+                }
+            }
+
+            searchBtn.addEventListener('click', function() {
+                renderBlessing(nameInput.value);
+            });
+
+            nameInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    renderBlessing(nameInput.value);
+                }
+            });
+
+            if (nameInput.value.trim()) {
+                renderBlessing(nameInput.value);
+            }
+        })();
+    </script>
+</body>
+</html>
